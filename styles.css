@@ -1,0 +1,677 @@
+/* =========================================================
+   STYLES.CSS con Variabili CSS e Commenti Guidati
+   ---------------------------------------------------------
+   COME USARLO:
+   1) Modifica i valori in :root per cambiare l’intera palette.
+   2) Nel resto del foglio, i colori sono usati con var(--nome).
+   3) Puoi creare varianti (hover, bordi, testi) partendo dai
+      token semantici (--accent, --muted, ecc.).
+   ========================================================= */
+
+/* =======================
+   0. Design Tokens (CSS Variables)
+   ======================= */
+:root {
+  /* ---- Palette di base (fornita) ---- */
+  --humo-claro: #F5F5F5;    /* sfondi chiari / box */
+  --plata: #C7C5AF;         /* accenti / bottoni / elementi primari */
+  --plata-oscuro: #ADAB94;  /* hover / accenti scuri / testi secondari */
+
+  /* ---- Token semantici (consigliato usare questi nel CSS) ----
+     Per cambiare look al sito, tocca questi, non i colori grezzi.
+  */
+  --bg: var(--humo-claro);          /* Sfondi principali */
+  --surface: #FFFFFF;               /* Card/aree sopra lo sfondo (rimane bianco per contrasto) */
+  --text: #333333;                  /* Testo base */
+  --text-inverse: #FFFFFF;          /* Testo su sfondi scuri */
+  --muted: var(--plata-oscuro);     /* Testo secondario / icone */
+  --accent: var(--plata);           /* Bottoni, marker timeline, ecc. */
+  --accent-hover: var(--plata-oscuro);
+  --divider: rgba(0,0,0,0.1);       /* Linee sottili / ombre leggere */
+
+  /* ---- Altri utili ---- */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --shadow-sm: 0 3px 10px rgba(0,0,0,0.1);
+  --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* =======================
+   1. Reset & Generics
+   ======================= */
+* {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+/* Bottoni switch lingua:
+   Usa --accent per il fondo e --accent-hover per hover */
+.language-switcher button {
+  padding: 5px 10px;
+  border: none;
+  background: var(--accent);
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: var(--radius-sm);
+}
+.language-switcher button:hover {
+  background: var(--accent-hover);
+  color: var(--text-inverse);
+}
+
+body {
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--bg); /* cambio globale dello sfondo */
+}
+
+img,
+video {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =======================
+   2. Typography
+   ======================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.cormo-text {
+  font-family: 'Cormorant Garamond', cursive;
+  font-size: 2rem;
+}
+
+/* =======================
+   3. Utilities
+   ======================= */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Titoli sezione con underline centrata:
+   colore collegato a --accent */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  color: var(--accent);
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+/* Bottoni principali:
+   base su --accent, hover su --accent-hover */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--accent);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+section {
+  padding: 5rem 0;
+  scroll-margin-top: 80px;
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.mobile-only { display: none; }
+
+/* =======================
+   4. Layout - Header & Navigation
+   ======================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px var(--divider);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+}
+
+.logo { display: flex; align-items: center; }
+
+/* Logo testuale in tinta con --muted */
+.logo h2 {
+  font-size: 1.8rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.logo-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+}
+.nav-links ul li { margin: 0 15px; }
+
+.nav-links ul li a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+.nav-links ul li a:hover { color: var(--muted); }
+
+/* =======================
+   5. Hero Section
+   ======================= */
+.hero {
+  height: 100vh;
+  position: relative;
+  background: url('images/bg-hero1.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-inverse);
+  overflow: hidden;
+}
+/* Overlay scuro per leggere meglio i testi su immagini */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Box traslucido sopra l'hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 40px 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  color: var(--text);
+}
+.hero-content h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.wedding-date {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* =======================
+   6. Story Section
+   ======================= */
+.storia { background-color: var(--surface); }
+
+.storia-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+/* Linea centrale timeline usa --accent */
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: var(--accent);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+.timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+
+/* Data timeline come pill con --accent */
+.timeline-date {
+  width: 120px;
+  padding: 10px;
+  background-color: var(--accent);
+  color: var(--text-inverse);
+  text-align: center;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  z-index: 1;
+  position: relative;
+  margin: 0 20px;
+}
+
+/* Box contenuto timeline su sfondo chiaro */
+.timeline-content {
+  width: calc(50% - 70px);
+  padding: 20px;
+  background-color: var(--bg);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+.timeline-content h3 {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+/* =======================
+   7. Gallery Section
+   ======================= */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+.gallery-item {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease;
+}
+.gallery-item:hover { transform: translateY(-5px); }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+
+/* =======================
+   8. Save the Date Section
+   ======================= */
+.savethedate { background-color: var(--bg); }
+
+.video-container {
+  margin: 0 auto 3rem;
+  max-width: 800px;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Placeholder video in tinta neutra */
+.video-placeholder {
+  background-color: var(--bg);
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+.video-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.wedding-details {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+.detail-item {
+  text-align: center;
+  margin: 1rem;
+  width: 250px;
+}
+.detail-item i {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+.detail-item h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+/* =======================
+   9. Contact Section
+   ======================= */
+.contact-form { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 20px; }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-sm);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+.form-group textarea { height: 150px; resize: vertical; }
+
+/* Testi info contatti tenuti chiari per accessibilità */
+.contact-info {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-inverse);
+}
+.contact-info p { margin: 1rem 0; }
+.contact-info i { margin-right: 10px; color: var(--text-inverse); }
+
+/* Link contatti: nero per forte leggibilità su superfici chiare */
+.contact-info a {
+  color: #000000;
+  text-decoration: none;
+}
+.contact-info a:hover { text-decoration: underline; }
+
+/* Pulsante link mappe con --accent */
+.maps-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: var(--accent);
+  color: var(--text-inverse);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: bold;
+}
+.maps-link:hover { background-color: var(--accent-hover); }
+
+/* =======================
+   10. Footer
+   ======================= */
+footer {
+  background-color: #333333;
+  color: var(--text-inverse);
+  padding: 3rem 0 1rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo h3 { font-size: 1.8rem; margin-bottom: 5px; }
+
+/* Icone social in cerchio con --accent */
+.social-links a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent);
+  color: var(--text-inverse);
+  border-radius: 50%;
+  margin: 0 5px;
+  text-align: center;
+  line-height: 40px;
+  transition: all 0.3s ease;
+}
+.social-links a:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+}
+
+/* =======================
+   11. Responsive Design
+   ======================= */
+@media screen and (max-width: 992px) {
+  .timeline-content { width: calc(50% - 50px); }
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-only { display: block; }
+
+  /* Menu mobile: sfondo superficie chiara */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    height: 100vh;
+    width: 250px;
+    background-color: var(--surface);
+    box-shadow: -2px 0 10px var(--divider);
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+  .nav-links.active { right: 0; }
+
+  .nav-links ul { flex-direction: column; padding-top: 80px; }
+  .nav-links ul li { margin: 15px 25px; text-align: right; }
+
+  .nav-links .mobile-only .fa-times {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 1.5rem;
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .navbar .mobile-only .fa-bars {
+    font-size: 1.5rem;
+    color: var(--accent);
+    cursor: pointer;
+  }
+
+  .hero-content h1 { font-size: 3.5rem; }
+  .wedding-date { font-size: 1.2rem; }
+
+  .timeline::before { left: 30px; }
+  .timeline-item,
+  .timeline-item:nth-child(odd) { flex-direction: row; }
+
+  .timeline-date {
+    width: auto;
+    margin: 0;
+    position: absolute;
+    left: 30px;
+    transform: translateX(-50%);
+  }
+  .timeline-content {
+    width: calc(100% - 60px);
+    margin-left: 60px;
+  }
+
+  .wedding-details { flex-direction: column; align-items: center; }
+  .detail-item { margin-bottom: 2rem; }
+
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-logo { margin-bottom: 20px; }
+}
+
+@media screen and (max-width: 576px) {
+  .section-title { font-size: 2rem; }
+  .hero-content h1 { font-size: 2.8rem; }
+  .storia-text { font-size: 1rem; }
+  .gallery-container { grid-template-columns: 1fr; }
+}
+
+/* =======================
+   12. Video Custom Styles
+   ======================= */
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  background-color: #000000;
+}
+.video-container video.fade-in-video {
+  opacity: 0;
+  transform: scale(0.98);
+  animation: fadeInVideo 1s ease-out forwards;
+}
+@keyframes fadeInVideo {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.video-wrapper video {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+/* Overlay play: resta scuro per leggibilità sul video */
+.video-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex; justify-content: center; align-items: center;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+.video-overlay:hover { background-color: rgba(0,0,0,0.4); }
+
+#playPauseButton {
+  font-size: 4rem;
+  color: var(--text-inverse);
+  transition: transform 0.3s ease;
+}
+.video-playing .video-overlay { background-color: transparent; }
+.video-playing #playPauseButton::before { content: "\f04c"; }
+
+/* =======================
+   13. Miscellaneous
+   ======================= */
+.countdown-container {
+  text-align: center;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+#countdown {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* Box lista nozze neutro + call-to-action in --accent */
+.listanozze, .contatti { text-align:center; padding:40px 20px; margin:40px 0; }
+.lista-link, .contact-btn {
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--accent);
+  color:var(--text-inverse);
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:6px;
+  transition:background 0.3s ease, transform 0.2s;
+}
+.lista-link:hover, .contact-btn:hover {
+  background:var(--accent-hover);
+  transform:translateY(-2px);
+}
+
+/* Counter tempo con box chiaro e numero in accent */
+.time-box {
+  background-color: var(--bg);
+  padding: 15px;
+  border-radius: var(--radius-lg);
+  min-width: 80px;
+}
+.number {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* Contatti */
+.contact-info {
+  max-width:600px;
+  margin:0 auto;
+  text-align:center;
+  font-size:1.1rem;
+  color:var(--accent);
+}
+.contact-info p { margin:1rem 0; }
+.contact-info i { margin-right:10px; color:var(--accent); }

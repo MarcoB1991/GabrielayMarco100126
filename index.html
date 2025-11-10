@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Nostro Matrimonio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" class="logo-img">
+                <img src="images/img12.jpg" alt="Logo IMG" class="logo-img">
+            </div>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="#home" data-it="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="#storia" data-it="La Nostra Storia" data-es="Nuestra Historia">La Nostra Storia</a></li>
+                    <li><a href="#gallery" data-it="Galleria" data-es="Galería">Galleria</a></li>
+                    <li><a href="#savethedate" data-it="Save The Date" data-es="Save The Date">Save The Date</a></li>
+                    <li><a href="#listanozze" data-it="Lista Nozze" data-es="Lista de Bodas">Lista Nozze</a></li>
+                    <li><a href="#contatti" data-it="Conferma qui" data-es="Confirma aquí">Conferma qui</a></li>
+                </ul>
+                <div class="mobile-only">
+                    <i class="fas fa-times" id="closeMenu"></i>
+                </div>
+            </div>
+            <div class="mobile-only">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </div>
+
+            <!-- Bottoni lingua -->
+            <div class="language-switcher">
+                <button id="btn-it">IT</button>
+                <button id="btn-es">ES</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="cormo-text" data-it="Gabriela e Marco" data-es="Gabriela y Marco">Gabriela e Marco</h1>
+            <p class="wedding-date" data-it="10 Gennaio 2026" data-es="10 de enero de 2026">10 Gennaio 2026</p>
+            <div class="time-box">
+                <span class="number" id="days"></span> <span data-it="Giorni" data-es="Días">Giorni</span>
+                <span class="number" id="hours"></span> <span data-it="Ore" data-es="Horas">Ore</span>
+                <span class="number" id="minutes"></span> <span data-it="Minuti" data-es="Minutos">Minuti</span>
+                <span class="number" id="seconds"></span> <span data-it="Secondi" data-es="Segundos">Secondi</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="storia" id="storia">
+        <div class="container">
+            <h2 class="section-title" data-it="La Nostra Storia" data-es="Nuestra Historia">La Nostra Storia</h2>
+            <div class="storia-text">
+                <p data-it="C'era una volta due viaggiatori provenienti da mondi lontani. Marco, nato ai piedi delle maestose Alpi, e Gabriela, sotto il cielo delle imponenti Ande. Ognuno percorreva il proprio cammino, ma entrambi portavano nel cuore la stessa speranza: trovare, tra i sentieri del mondo, il loro vero amore."
+                   data-es="Había una vez dos viajeros provenientes de mundos lejanos. Marco, nacido al pie de los majestuosos Alpes, y Gabriela, bajo el cielo de los imponentes Andes. Cada uno recorría su propio camino, pero ambos llevaban en el corazón la misma esperanza: encontrar, entre los senderos del mundo, su verdadero amor.">
+                </p>
+            </div>
+            <br><br>
+            <div class="storia-content">
+                <div class="storia-text">
+                    <img src="images/storia.jpg" alt="La nostra Storia" class="responsive-image">
+                </div>
+                <br><br>
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-content">
+                            <h3>Intervention</h3>
+                            <p data-it="Nel mezzo di una pandemia, quando tutto sembrava fermarsi, il destino ha deciso d'intervenire. Gabriela e Marco si conoscono a distanza, nell'anno più inaspettato."
+                               data-es="En medio de una pandemia, cuando todo parecía detenerse, el destino decidió intervenir. Gabriela y Marco se conocen a la distancia, en el año más inesperado.">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-content">
+                            <h3>How Your Mother Met Me</h3>
+                            <p data-it="Quest'anno si sono conosciute le nostre mamme. E con loro, anche le nostre radici. Primo viaggio di Marco in Perù e poi primo viaggio di Gabriela in Italia."
+                               data-es="Ese año se conocieron nuestras mamás. Y con ellas, también nuestras raíces. Primer viaje de Marco al Perú y luego primer viaje de Gabriela a Italia.">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h3>Wait for it</h3>
+                            <p data-it="Abbiamo dovuto aspettare... ma quando l'amore è vero, il tempo non pesa. Gabriela parte per la Spagna per il suo master, mentre l'amore cresce nella distanza."
+                               data-es="Tuvimos que esperar... pero cuando el amor es verdadero, el tiempo no pesa. Gabriela se va a España para su maestría, mientras el amor crece en la distancia.">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h3>Challenge Accepted</h3>
+                            <p data-it="Marco chiede la mano di Gabriela durante un viaggio da sogno a Vienna. Poi vola in Spagna per chiedere la benedizione di suo padre in un’emozionante serata a Barcellona."
+                               data-es="Marco pide la mano de Gabriela durante un viaje de ensueño en Viena. Después, vuela a España para pedir la bendición del padre de Gabriela en una emocionante velada en Barcelona.">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025</div>
+                        <div class="timeline-content">
+                            <h3>Last Forever, Part One</h3>
+                            <p data-it="La nostra storia è iniziata con un matrimonio civile tra le mura di un castello, a Torino, l’8 di settembre. “Dalle Alpi alle Ande, due culture unite in una sola famiglia.”"
+                               data-es="Nuestra historia comenzó con un matrimonio civil entre los muros de un castillo, en Turín, el 8 de septiembre. “Dalle Alpi alle Ande, due culture unite in una sola famiglia.”">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026</div>
+                        <div class="timeline-content">
+                            <h3>Last Forever, Part Two</h3>
+                            <p data-it="Continua qui il nostro per sempre, questa volta di fronte a Dio. L'anno del matrimonio religioso: Famiglia Bertello Sanabria fino alla fine."
+                               data-es="Ahora continúa nuestro para siempre, esta vez como Dios manda. El año del matrimonio religioso: Familia Bertello Sanabria “fino alla fine”.">
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-it="I Nostri Momenti" data-es="Nuestros Momentos">I Nostri Momenti</h2>
+            <div class="gallery-container">
+                <div class="gallery-item"><img src="images/img1.jpg" alt="Momento insieme 1"></div>
+                <div class="gallery-item"><img src="images/img2.jpg" alt="Momento insieme 2"></div>
+                <div class="gallery-item"><img src="images/img3.jpg" alt="Momento insieme 3"></div>
+                <div class="gallery-item"><img src="images/img4.jpg" alt="Momento insieme 4"></div>
+                
+                <div class="gallery-item"><img src="images/img6.jpg" alt="Momento insieme 6"></div>
+                <div class="gallery-item"><img src="images/img7.jpg" alt="Momento insieme 7"></div>
+                <div class="gallery-item"><img src="images/img8.jpg" alt="Momento insieme 8"></div>
+                
+                <div class="gallery-item"><img src="images/img10.jpg" alt="Momento insieme 10"></div>
+                
+                <div class="gallery-item"><img src="images/img12.jpg" alt="Momento insieme 12"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="savethedate" id="savethedate">
+        <div class="container">
+            <h2 class="section-title" data-it="Save The Date" data-es="Save The Date">Save The Date</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="saveTheDateVideo" poster="images/video-poster.jpg">
+                        <source src="video/ilsave1.mp4" type="video/mp4">
+                        <span data-it="Il tuo browser non supporta il video." data-es="Tu navegador no soporta el video.">
+                            Il tuo browser non supporta il video.
+                        </span>
+                    </video>
+                    <div class="video-overlay" id="videoOverlay">
+                        <i class="fas fa-play-circle" id="playPauseButton"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wedding-details">
+                <div class="detail-item">
+                    <i class="fas fa-landmark"></i>
+                    <h3 data-it="Cerimonia" data-es="Ceremonia">Cerimonia</h3>
+                    <p data-it="Parrocchia Nostra Signora del Pilar, San Isidro (Lima) ore 11h30"
+                       data-es="Parroquia Nuestra Señora del Pilar, San isidro (Lima) 11:30 am">
+                    </p>
+                    <a href="https://maps.app.goo.gl/Evp71fWVRiSeVMks5" target="_blank" class="maps-link"
+                       data-it="📍 Vedi posizione su Google Maps"
+                       data-es="📍 Ver ubicación en Google Maps">
+                    </a>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3 data-it="Data" data-es="Fecha">Data</h3>
+                    <p data-it="10 Gennaio 2026" data-es="10 de enero de 2026">10 Gennaio 2026</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3 data-it="Ricevimento" data-es="Recepción">Ricevimento</h3>
+                    <p data-it="Club Las Lagunas, Pasaje La Isla 101 Urb. Club Campestre Las Lagunas, La Molina"
+                       data-es="Club Las Lagunas, Pasaje La Isla 101 Urb. Club Campestre Las Lagunas, La Molina">
+                    </p>
+                    <a href="https://maps.app.goo.gl/Fk76ncqgwNWGuprWA" target="_blank" class="maps-link"
+                       data-it="📍 Vedi posizione su Google Maps"
+                       data-es="📍 Ver ubicación en Google Maps">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="listanozze" id="listanozze">
+  <div class="storia-text">
+    <h2 class="section-title" data-it="Lista Nozze" data-es="Lista de Bodas">Lista Nozze</h2>
+    <p data-it="Per chi desidera contribuire al nostro futuro insieme, sarà per noi un gesto molto apprezzato."
+       data-es="Para quienes deseen contribuir a nuestro futuro juntos, será un gesto muy apreciado."></p><br>
+
+    <a href="https://sinenvolturas.com/buscar" target="_blank" class="lista-link"
+       data-it="💝 Vai alla nostra Lista Nozze di SinEnvoltura"
+       data-es="💝 Ir a nuestra Lista de Bodas de SinEnvoltura"></a>
+    <p data-it="Entrare al link e cercare Gabriela e Marco"
+       data-es="Ingresar al enlace y buscar Gabriela y Marco"></p><br>
+
+    <img src="images/torino.jpg" alt="Storia Torino" class="responsive-image">
+  </div>
+</section>
+
+<section class="contatti" id="contatti">
+  <div class="container">
+    <h2 class="section-title" data-it="Conferma la tua presenza" data-es="Confirma tu asistencia">Formulario</h2>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i>
+        <a href="https://docs.google.com/forms/d/1aSzCKU2ITPJz6UkhGP9_oMhvxpDNvBUq84f1ZnljJjg/edit"
+           target="_blank" class="contact-btn"
+           data-it="💌 Compila il formulario"
+           data-es="💌 Ingresa al formulario"></a>
+      </p>
+      <p><i class="fas fa-map-marker-alt"></i>
+        <span data-it="Location: Lima, Perù" data-es="Ubicación: Lima, Perú">Location: Lima, Perù</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo-footer.png" alt="Logo" class="logo-img">
+                    <img src="images/img12.jpg" alt="Logo IMG" class="logo-img">
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p data-it="&copy; 2026 - Gabriela & Marco - Tutti i diritti riservati"
+                data-es="&copy; 2026 - Gabriela & Marco - Todos los derechos reservados">
+                &copy; 2026 - Gabriela & Marco - Tutti i diritti riservati
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
